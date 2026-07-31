@@ -158,14 +158,80 @@
         <!-- ========================================== -->
         <main class="pt-12 lg:w-[60%] lg:py-24 space-y-24">
             
-            <!-- SECTION 1: Interactive CV (Local sanitized data) -->
+            <!-- ========================================== -->
+            <!-- CV SECTION (Private Repo Release PDF)      -->
+            <!-- ========================================== -->
             <section id="cv" class="scroll-mt-24">
-                <div class="flex items-center gap-3 mb-8 lg:hidden">
-                    <h3 class="text-xl font-bold uppercase tracking-widest text-white">CV</h3>
-                </div>
                 
-                <div id="cv-container" class="space-y-6">
-                    <!-- Populated by JS -->
+                <!-- Section Header & Direct Action Buttons -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-zinc-500">Curriculum Vitae</span>
+                        <h3 class="text-2xl font-bold tracking-tight text-white mt-1">My Resume</h3>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <!-- <div class="flex items-center gap-2.5 shrink-0"> -->
+                        <!-- View PDF in New Tab -->
+                        <!-- <a href="assets/cv.pdf" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 text-xs font-semibold bg-[#181818] hover:bg-[#222222] text-zinc-300 hover:text-white px-3.5 py-2 rounded-lg border border-[#27272a] transition shadow-sm">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 text-zinc-400"></i> Open PDF
+                        </a> -->
+
+                        <!-- Direct Download Button -->
+                        <!-- <a href="assets/cv.pdf" 
+                        download="Medhansh_Rath_CV.pdf" 
+                        class="inline-flex items-center gap-2 text-xs font-semibold bg-white text-black hover:bg-zinc-200 px-3.5 py-2 rounded-lg transition shadow-sm">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download
+                        </a>
+                    </div> -->
+                </div>
+
+                <!-- Subtitle / Meta Information Badge -->
+                <div class="flex flex-wrap items-center gap-2.5 text-xs text-zinc-400 mb-6 bg-[#181818] p-3 rounded-lg border border-[#27272a]">
+                    <span class="flex items-center gap-1.5 text-emerald-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Auto-compiled build
+                    </span>
+                    <span class="text-zinc-600">•</span>
+                    <span class="font-mono text-zinc-400">LaTeX / GitHub Actions</span>
+                    <span class="text-zinc-600">•</span>
+                    <span class="text-zinc-500">Always up-to-date</span>
+                </div>
+
+                <!-- Embedded PDF Viewer Container -->
+                <div class="relative w-full h-[650px] bg-[#181818] rounded-xl border border-[#27272a] overflow-hidden shadow-2xl">
+                    
+                    <!-- Embedded PDF Document -->
+                    <!-- Added &pagemode=none for Firefox support -->
+                    <object 
+                        data="assets/cv.pdf#navpanes=0&pagemode=none" 
+                        type="application/pdf" 
+                        class="w-full h-full rounded-xl">
+                        
+                        <!-- Mobile Browser / Unsupported Viewer Fallback -->
+                        <div class="flex flex-col items-center justify-center h-full p-8 text-center space-y-4 bg-[#111111]">
+                            <div class="p-4 bg-[#181818] rounded-full text-zinc-400 border border-[#27272a]">
+                                <i data-lucide="file-text" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-white">PDF Preview Unavailable</h4>
+                                <p class="text-xs text-zinc-400 mt-1 max-w-sm">
+                                    Inline PDF previews aren't supported on some mobile browsers. You can view or download the document directly below.
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-3 pt-2">
+                                <a href="assets/cv.pdf" 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 text-xs font-semibold bg-white text-black px-4 py-2 rounded-lg hover:bg-zinc-200 transition">
+                                    <i data-lucide="eye" class="w-4 h-4"></i> View CV Document
+                                </a>
+                            </div>
+                        </div>
+                    </object>
+
                 </div>
             </section>
 
