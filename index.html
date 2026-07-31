@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio & Hub</title>
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#4f46e5', dark: '#0f172a', surface: '#1e293b' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- html2pdf.js for PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); }
+    </style>
+</head>
+<body class="bg-dark text-gray-200 antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-700">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-white tracking-tight">Portfolio<span class="text-primary">Hub</span></h1>
+            <div class="hidden md:flex space-x-6">
+                <a href="#cv" class="hover:text-primary transition">Interactive CV</a>
+                <a href="#about" class="hover:text-primary transition">Articles</a>
+                <a href="#notes" class="hover:text-primary transition">Study Notes</a>
+                <a href="#booking" class="hover:text-primary transition">Book a Slot</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header class="pt-32 pb-20 px-4 text-center max-w-3xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Hi, I'm <span class="text-primary">Your Name</span></h2>
+        <p class="text-lg text-slate-400 mb-8">Welcome to my personal hub. Explore my experience, download my notes, or book a time to chat.</p>
+    </header>
+
+    <!-- SECTION 1: Interactive CV (GitLab Fetch) -->
+    <section id="cv" class="py-16 px-4 max-w-4xl mx-auto">
+        <div class="flex items-center gap-3 mb-8">
+            <i data-lucide="briefcase" class="text-primary"></i>
+            <h3 class="text-3xl font-bold text-white">Interactive CV</h3>
+        </div>
+        
+        <!-- CV Container (Populated by JS) -->
+        <div id="cv-container" class="space-y-6">
+            <!-- Loading Skeleton -->
+            <div class="animate-pulse bg-surface p-6 rounded-xl border border-slate-700">
+                <div class="h-6 bg-slate-600 rounded w-1/3 mb-4"></div>
+                <div class="h-4 bg-slate-600 rounded w-full mb-2"></div>
+                <div class="h-4 bg-slate-600 rounded w-5/6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Text Section with PDF Export -->
+    <section id="about" class="py-16 px-4 max-w-4xl mx-auto">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center gap-3">
+                <i data-lucide="file-text" class="text-primary"></i>
+                <h3 class="text-3xl font-bold text-white">Research & Bio</h3>
+            </div>
+            <button onclick="downloadSectionAsPDF()" class="flex items-center gap-2 bg-primary hover:bg-indigo-500 text-white px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-500/30">
+                <i data-lucide="download" class="w-4 h-4"></i> Export to PDF
+            </button>
+        </div>
+
+        <div id="exportable-text" class="bg-surface p-8 rounded-xl border border-slate-700 text-slate-300">
+            <h4 class="text-2xl font-bold text-white mb-4">About My Work</h4>
+            <p class="mb-4">This section can contain your professional biography, publications, or articles. The beauty of this section is that any visitor can instantly convert this HTML into a clean PDF format using the button above.</p>
+            <p class="mb-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h5 class="text-xl font-semibold text-white mt-6 mb-3">Key Achievements</h5>
+            <ul class="list-disc list-inside space-y-2">
+                <li>Published in Journal of XYZ</li>
+                <li>Developed cutting-edge algorithms for ABC</li>
+                <li>Led a team of 10 engineers</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Samsung Notes Hub -->
+    <section id="notes" class="py-16 px-4 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+            <div class="flex items-center gap-3">
+                <i data-lucide="book-open" class="text-primary"></i>
+                <h3 class="text-3xl font-bold text-white">Study Notes Hub</h3>
+            </div>
+            <!-- Search & Filter -->
+            <div class="flex gap-3">
+                <input type="text" id="noteSearch" placeholder="Search notes..." class="bg-slate-800 border border-slate-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:border-primary w-full md:w-64" onkeyup="filterNotes()">
+                <select id="noteCategory" class="bg-slate-800 border border-slate-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:border-primary" onchange="filterNotes()">
+                    <option value="all">All Categories</option>
+                    <option value="cs">Computer Science</option>
+                    <option value="math">Mathematics</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Notes Grid -->
+        <div id="notes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Populated by JS -->
+        </div>
+    </section>
+
+    <!-- SECTION 4: Booking (Cal.com / Calendly) -->
+    <section id="booking" class="py-16 px-4 max-w-4xl mx-auto mb-20">
+        <div class="flex items-center gap-3 mb-8">
+            <i data-lucide="calendar" class="text-primary"></i>
+            <h3 class="text-3xl font-bold text-white">Book a Slot</h3>
+        </div>
+        
+        <div class="bg-surface rounded-xl border border-slate-700 overflow-hidden shadow-xl p-2 h-[600px]">
+            <!-- Replace this iframe src with your Calendly or Cal.com embed link -->
+            <iframe 
+                src="https://cal.com/medhansh-rath/other" 
+                class="w-full h-full border-none rounded-lg bg-white"
+                title="Book a Meeting">
+            </iframe>
+        </div>
+    </section>
+
+    <footer class="text-center py-8 text-slate-500 border-t border-slate-800">
+        <p>&copy; 2026 Your Name. Hosted on GitHub Pages.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // --- 1. CV LOGIC (GitLab Fetch) ---
+        // Replace this URL with your raw GitLab JSON URL (ensure repository/file is public)
+        const gitlabCV_URL = 'YOUR_GITLAB_RAW_JSON_URL_HERE';
+        
+        // Fallback data in case GitLab fetch fails
+        const defaultCV = [
+            { role: "Senior Software Engineer", company: "Tech Corp", duration: "2023 - Present", desc: "Led front-end architecture and modernized the tech stack." },
+            { role: "Data Scientist", company: "DataSync", duration: "2020 - 2023", desc: "Developed predictive models and maintained the data pipeline." }
+        ];
+
+        async function loadCV() {
+            const container = document.getElementById('cv-container');
+            let cvData = defaultCV; // default
+
+            try {
+                // Uncomment the lines below when you have a real URL
+                // const response = await fetch(gitlabCV_URL);
+                // if(response.ok) { cvData = await response.json(); }
+                
+                // Simulating network delay for skeleton preview
+                await new Promise(r => setTimeout(r, 800)); 
+            } catch (error) {
+                console.warn("Failed to fetch from GitLab, using fallback data.");
+            }
+
+            // Render CV
+            container.innerHTML = cvData.map(job => `
+                <div class="bg-surface p-6 rounded-xl border border-slate-700 card-hover transition duration-300">
+                    <div class="flex justify-between items-start mb-2 flex-col md:flex-row">
+                        <h4 class="text-xl font-bold text-white">${job.role}</h4>
+                        <span class="text-primary font-semibold text-sm bg-indigo-500/10 px-3 py-1 rounded-full mt-2 md:mt-0">${job.duration}</span>
+                    </div>
+                    <p class="text-slate-400 font-medium mb-3">${job.company}</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">${job.desc}</p>
+                </div>
+            `).join('');
+        }
+        
+        loadCV();
+
+        // --- 2. PDF EXPORT LOGIC ---
+        function downloadSectionAsPDF() {
+            const element = document.getElementById('exportable-text');
+            // Clone to style specifically for PDF if needed, but direct works fine
+            const opt = {
+                margin:       0.5,
+                filename:     'My_Bio_And_Research.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true, logging: true },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            
+            // Temporary dark-mode fix for PDF generation (makes text black on white)
+            element.classList.remove('text-slate-300', 'bg-surface');
+            element.style.color = '#000';
+            element.style.backgroundColor = '#fff';
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore styles after PDF generation
+                element.classList.add('text-slate-300', 'bg-surface');
+                element.style.color = '';
+                element.style.backgroundColor = '';
+            });
+        }
+
+        // --- 3. NOTES HUB LOGIC ---
+        // Define your notes here. Upload the actual PDFs to an 'assets/notes' folder in GitHub
+        /*
+        const notesData = [
+            { title: "Machine Learning Basics", category: "cs", tags: "AI, Python", file: "assets/notes/ml-basics.pdf", date: "May 2026" },
+            { title: "Linear Algebra Formulas", category: "math", tags: "Matrices, Vectors", file: "assets/notes/lin-alg.pdf", date: "Apr 2026" },
+            { title: "Algorithms Cheatsheet", category: "cs", tags: "Sorting, Graphs", file: "assets/notes/algorithms.pdf", date: "Feb 2026" },
+            { title: "Calculus III Theorems", category: "math", tags: "Integrals", file: "assets/notes/calc3.pdf", date: "Jan 2026" }
+        ];
+        */
+
+        const notesData = [];
+
+        function renderNotes(notes) {
+            const grid = document.getElementById('notes-grid');
+            if(notes.length === 0) {
+                grid.innerHTML = `<p class="text-slate-500 col-span-full text-center py-10">No notes found matching your criteria.</p>`;
+                return;
+            }
+            
+            grid.innerHTML = notes.map(note => `
+                <div class="bg-surface p-5 rounded-xl border border-slate-700 flex flex-col justify-between card-hover transition duration-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 bg-slate-800 px-2 py-1 rounded">${note.category}</span>
+                            <span class="text-xs text-slate-500">${note.date}</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">${note.title}</h4>
+                        <p class="text-sm text-slate-400 mb-4">Tags: ${note.tags}</p>
+                    </div>
+                    <a href="${note.file}" download target="_blank" class="flex justify-center items-center gap-2 w-full bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg transition border border-slate-600">
+                        <i data-lucide="download" class="w-4 h-4"></i> Download PDF
+                    </a>
+                </div>
+            `).join('');
+            
+            lucide.createIcons(); // re-initialize icons for dynamic content
+        }
+
+        function filterNotes() {
+            const query = document.getElementById('noteSearch').value.toLowerCase();
+            const category = document.getElementById('noteCategory').value;
+            
+            const filtered = notesData.filter(note => {
+                const matchesSearch = note.title.toLowerCase().includes(query) || note.tags.toLowerCase().includes(query);
+                const matchesCategory = category === 'all' || note.category === category;
+                return matchesSearch && matchesCategory;
+            });
+            
+            renderNotes(filtered);
+        }
+
+        // Initial Render
+        renderNotes(notesData);
+    </script>
+</body>
+</html>
