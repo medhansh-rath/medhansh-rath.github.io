@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THWS Schweinfurt: Ultimate Student Survival Guide - Medhansh Rath</title>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#4f46e5', dark: '#0f172a', surface: '#1e293b' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- html2pdf.js for PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white min-h-screen">
+
+    <div class="max-w-3xl mx-auto px-6 py-12 md:py-20">
+        
+        <!-- Navigation Back Link -->
+        <a href="../index.html#about" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-indigo-400 mb-10 transition">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Main Page
+        </a>
+
+        <!-- Article Container for PDF Export -->
+        <div id="downloadable-article">
+            
+            <!-- Article Header -->
+            <header class="mb-10 pb-8 border-b border-slate-800">
+                <div class="flex items-center gap-3 text-xs text-slate-400 mb-3">
+                    <span class="bg-primary/20 text-primary px-2.5 py-1 rounded-full font-semibold uppercase tracking-wider">Student Guide</span>
+                    <span>•</span>
+                    <time datetime="2026-07-31">July 31, 2026</time>
+                    <span>•</span>
+                    <span>12 min read</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+                    THWS Schweinfurt: Essential Student Survival & Arrival Guide
+                </h1>
+                <p class="mt-4 text-lg text-slate-400 leading-relaxed">
+                    Everything you need to know about banking, housing, exams, campus life, healthcare, and surviving as an international student at THWS.
+                </p>
+
+                <!-- Download Actions Toolbar -->
+                <div id="article-actions" class="flex flex-wrap items-center gap-3 mt-6 pt-4 border-t border-slate-800/60">
+                    <!-- Download Source File -->
+                    <a href="thws-info.html" download="THWS_Schweinfurt_Survival_Guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-surface hover:bg-slate-700 text-slate-200 hover:text-white px-3.5 py-2 rounded-lg border border-slate-700 transition shadow-sm">
+                        <i data-lucide="download" class="w-4 h-4 text-primary"></i> Download HTML
+                    </a>
+                    <!-- Export as PDF -->
+                    <button onclick="downloadPagePDF()" class="inline-flex items-center gap-2 text-xs font-semibold bg-surface hover:bg-slate-700 text-slate-200 hover:text-white px-3.5 py-2 rounded-lg border border-slate-700 transition shadow-sm">
+                        <i data-lucide="file-text" class="w-4 h-4 text-primary"></i> Export as PDF
+                    </button>
+                </div>
+            </header>
+
+            <!-- Table of Contents Quick Nav -->
+            <nav id="toc-nav" class="p-5 bg-surface/50 rounded-xl border border-slate-800 mb-10">
+                <p class="text-white font-semibold mb-3 flex items-center gap-2 text-sm">
+                    <i data-lucide="list" class="w-4 h-4 text-primary"></i> Quick Navigation
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                    <a href="#banking" class="hover:text-primary transition">1. Banking & Accounts</a>
+                    <a href="#housing" class="hover:text-primary transition">2. Housing & Contracts</a>
+                    <a href="#registration" class="hover:text-primary transition">3. Municipal Registration & GEZ</a>
+                    <a href="#campus" class="hover:text-primary transition">4. Campus Navigation & Printers</a>
+                    <a href="#itsc" class="hover:text-primary transition">5. ITSC & Re-enrollment</a>
+                    <a href="#exams" class="hover:text-primary transition">6. Exams, Regulations & Schedules</a>
+                    <a href="#healthcare" class="hover:text-primary transition">7. Healthcare & Emergencies</a>
+                    <a href="#lifestyle" class="hover:text-primary transition">8. Groceries & Activities</a>
+                </div>
+            </nav>
+
+            <!-- Main Article Content -->
+            <article class="space-y-10 text-slate-300 leading-relaxed text-base">
+
+                <!-- Section 1: Banking -->
+                <section id="banking" class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+                        <i data-lucide="credit-card" class="w-6 h-6 text-primary"></i> 1. Opening a Bank Account
+                    </h2>
+                    <p>
+                        Upon arriving in Germany, setting up a <strong>Girokonto</strong> (checking account) is essential for paying rent and managing expenses.
+                    </p>
+                    
+                    <div class="p-4 bg-surface/40 rounded-lg border border-slate-800 space-y-2">
+                        <h3 class="font-semibold text-white">Sparkasse Support via THWS</h3>
+                        <p class="text-sm">
+                            THWS has an official tie-up with <strong>Sparkasse Schweinfurt</strong>, making account setup hassle-free for students. To request assistance, send an email to:
+                        </p>
+                        <a href="mailto:welcome@thws.de" class="inline-flex items-center gap-1.5 text-xs bg-primary/20 text-primary px-3 py-1.5 rounded-md font-mono hover:bg-primary/30 transition">
+                            <i data-lucide="mail" class="w-3.5 h-3.5"></i> welcome@thws.de
+                        </a>
+                        <blockquote class="text-xs text-amber-400 italic mt-2">
+                            Note: THWS cannot assist with opening accounts at Sparkasse in Würzburg.
+                        </blockquote>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm mt-4">
+                        <div class="p-4 bg-surface/30 rounded-lg border border-slate-800">
+                            <span class="font-semibold text-white block mb-1">Online Banking Alternative</span>
+                            <p class="text-xs text-slate-400">
+                                Digital banks like <strong>N26</strong> allow quick setup (~10 minutes) without needing an immediate <em>Anmeldung</em> (city registration).
+                            </p>
+                        </div>
+                        <div class="p-4 bg-surface/30 rounded-lg border border-slate-800">
+                            <span class="font-semibold text-white block mb-1">Cash Withdrawals & CashGroup</span>
+                            <p class="text-xs text-slate-400">
+                                Always use your bank's own ATMs to avoid fees. If you use a <strong>CashGroup</strong> bank (Commerzbank, Deutsche Bank, HypoVereinsbank, Postbank), you can withdraw fee-free from any CashGroup ATM.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Housing -->
+                <section id="housing" class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+                        <i data-lucide="home" class="w-6 h-6 text-primary"></i> 2. Dorms, Housing & Rental Contracts
+                    </h2>
+                    
+                    <blockquote class="border-l-4 border-amber-500 pl-4 my-4 italic text-slate-200 bg-surface/40 py-3 pr-4 rounded-r-lg">
+                        <strong>Critical Warning:</strong> Most leases require a <strong>3-month notice period</strong> for cancellation. If you move out early without proper notice, rent will be deducted directly from your security deposit!
+                    </blockquote>
+
+                    <h3 class="text-lg font-semibold text-white mt-4">Understanding German Rent Terms</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                        <div class="p-3 bg-surface/30 rounded-lg border border-slate-800">
+                            <strong class="text-indigo-400">Kaltmiete:</strong> Base rent excluding utilities (water, electricity, heating).
+                        </div>
+                        <div class="p-3 bg-surface/30 rounded-lg border border-slate-800">
+                            <strong class="text-indigo-400">Warmmiete:</strong> Total rent including utility advance payments.
+                        </div>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-white mt-4">Housing Search Resources</h3>
+                    <p class="text-sm">Start looking as early as possible. Check <a href="https://international.thws.de/en/thws-international/ways-to-thws/applicants-and-student-support/before-your-arrival-at-thws/" target="_blank" class="text-primary hover:underline">Step 2 on the THWS Pre-Arrival page</a>.</p>
+                    
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><strong>Shared Flats (WG):</strong> <a href="http://www.wg-gesucht.de" target="_blank" class="text-primary hover:underline">WG-Gesucht</a> | <a href="https://www.studenten-wg.de" target="_blank" class="text-primary hover:underline">Studenten-WG</a></li>
+                        <li><strong>Housing Cooperatives:</strong> <a href="https://swg-schweinfurt.de" target="_blank" class="text-primary hover:underline">SWG Schweinfurt</a> | <a href="https://bauverein-sw.de" target="_blank" class="text-primary hover:underline">Bauverein SW</a></li>
+                        <li><strong>Dorms:</strong> <a href="https://www.studentenwerkwuerzburg.de/schweinfurt/wohnheime.html" target="_blank" class="text-primary hover:underline">Studentenwerk Würzburg</a> | <a href="http://www.awo-schweinfurt.de/studenten.html" target="_blank" class="text-primary hover:underline">AWO</a> | <a href="https://dornhausbau.de/studentenwohnheim-dornbau/" target="_blank" class="text-primary hover:underline">Dorn Bau</a></li>
+                    </ul>
+                </section>
+
+                <!-- Section 3: Municipal Registration & GEZ -->
+                <section id="registration" class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+                        <i data-lucide="building-2" class="w-6 h-6 text-primary"></i> 3. City Registration & GEZ Fee
+                    </h2>
+                    
+                    <h3 class="text-lg font-semibold text-white">City Registration (Anmeldung) Process</h3>
+                    <p class="text-sm">
+                        Upon moving to Schweinfurt, you must register your residential address at the City Hall (<em>Rathaus</em> at Marktplatz 1). Follow this specific two-step workflow:
+                    </p>
+                    <ol class="list-decimal pl-5 space-y-2 text-sm">
+                        <li>First, visit the <strong>Foreigners' Office (Ausländerbehörde)</strong> at Brückenstraße 14 to get an official stamp on your address registration application form.</li>
+                        <li>Next, go to the <strong>Rathaus</strong>. No prior appointment is required—take an appointment number ticket from the machine inside. Average wait time is only 5–10 minutes.</li>
+                    </ol>
+                    <p class="text-xs text-slate-400">
+                        *If in temporary housing without a <em>Wohnungsgeberbestätigung</em> (landlord confirmation), consult Rathaus staff directly.
+                    </p>
+
+                    <div class="p-4 bg-surface/50 rounded-xl border border-slate-800 space-y-2 mt-4">
+                        <h3 class="font-semibold text-white flex items-center gap-2">
+                            <i data-lucide="tv" class="w-4 h-4 text-primary"></i> GEZ (Rundfunkbeitrag)
+                        </h3>
+                        <p class="text-sm">
+                            Germany charges a mandatory broadcast fee of <strong>€18.36 per month per household</strong> for public radio/TV. 
+                        </p>
+                        <ul class="list-disc pl-5 text-xs space-y-1">
+                            <li>Cost is split evenly among all flatmates sharing an apartment.</li>
+                            <li>Only <strong>one person</strong> per household registers and handles payments (quarterly, semi-annually, or annually).</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 4: Campus & Printers -->
+                <section id="campus" class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-primary"></i> 4. Campus Navigation & Printers
+                    </h2>
+                    
+                    <p class="text-sm">
+                        THWS room codes use a three-number/letter convention (e.g., <strong>1.E.08</strong>):
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-center">
+                        <div class="p-3 bg-surface/40 rounded-lg border border-slate-800">
+                            <span class="block font-bold text-indigo-400">1st Digit = Building</span>
+                            1–8: Campus 1<br>9: Campus 2<br>20–21: Campus 3
+                        </div>
+                        <div class="p-3 bg-surface/40 rounded-lg border border-slate-800">
+                            <span class="block font-bold text-indigo-400">2nd Code = Floor</span>
+                            E = Erdgeschoss (Ground Floor)<br>1, 2... = Upper Floors<br>U = Basement
+                        </div>
+                        <div class="p-3 bg-surface/40 rounded-lg border border-slate-800">
+                            <span class="block font-bold text-indigo-400">3rd Digit = Room</span>
+                            Specific room number on that floor.
+                        </div>
+                    </div>
+                    <p class="text-xs">View full campus building maps on the <a href="https://www.thws.de/en/about-the-university/about-thws/fhws-university-buildings/" target="_blank" class="text-primary hover:underline">THWS Buildings Directory</a>.</p>
+
+                    <h3 class="text-lg font-semibold text-white mt-4">Copy Machine Locations (Ignaz-Schön-Strasse 11)</h3>
+                    <div class="text-xs grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div class="p-2.5 bg-surface/30 rounded border border-slate-800"><strong>Room 1.E.08:</strong> 2x b/w printers (Behind Post Office)</div>
+                        <div class="p-2.5 bg-surface/30 rounded border border-slate-800"><strong>Room 1.1.48:</strong> Color printer (PC Pool)</div>
+                        <div class="p-2.5 bg-surface/30 rounded border border-slate-800"><strong>Room 1.1.49:</strong> b/w printer (PC Pool)</div>
+                        <div class="p-2.5 bg-surface/30 rounded border border-slate-800"><strong>Room 4.E.10:</strong> Color printer (CAD Lab)</div>
+                        <div class="p-2.5 bg-surface/30 rounded border border-slate-800"><strong>Room 5.U.08:</strong> Color printer (PC Pool)</div>
+                        <div class="p-2.5 bg-surface/30 rounded border border-slate-800"><strong>Room 7.E.10:</strong> b/w printer (Library)</div>
+                        <div class="p-2.5 bg-surface/30 rounded border border-slate-800 sm:col-span-2"><strong>Room 9.2.02:</strong> b/w printer (PC Pool - Campus 2)</div>
+                    </div>
+                </section>
+
+                <!-- Section 5: ITSC & Re-enrollment -->
+                <section id="itsc" class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+                        <i data-lucide="laptop" class="w-6 h-6 text-primary"></i> 5. ITSC Department & Re-Enrollment
+                    </h2>
+                    
+                    <p class="text-sm">
+                        The <strong>ITSC</strong> handles all IT-related operational issues across THWS campuses.
+                    </p>
+                    <div class="p-4 bg-surface/40 rounded-lg border border-slate-800 text-xs space-y-1">
+                        <p class="text-white font-semibold">ITSC Support Desk</p>
+                        <p><strong>Location:</strong> Campus 1, Ignaz-Schön-Str. 11, Room 7.1.07</p>
+                        <p><strong>Hotline:</strong> 09721-940 6262</p>
+                        <p><strong>Hours:</strong> Mon–Thu 08:00–16:00 | Fri 08:00–15:00</p>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-white mt-4">Semester Re-enrollment (Rückmeldung)</h3>
+                    <p class="text-sm">
+                        Re-enrollment must be completed every semester to maintain student status. Access fees and guidelines through the <a href="https://www.thws.de/en/studies-at-thws/application-enrolment-exams-internship/re-enrolment-and-fees/" target="_blank" class="text-primary hover:underline">THWS Re-enrolment & Fees Portal</a>.
+                    </p>
+                </section>
+
+                <!-- Section 6: Exams & Regulations -->
+                <section id="exams" class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+                        <i data-lucide="file-check" class="w-6 h-6 text-primary"></i> 6. Exams & Academic Regulations
+                    </h2>
+                    
+                    <ul class="list-disc pl-5 space-y-2 text-sm">
+                        <li><strong>Attempt Rules:</strong> You have a maximum of <strong>3 attempts</strong> per exam.
+                            <ul class="list-circle pl-5 text-xs text-slate-400 mt-1 space-y-0.5">
+                                <li>Failing Attempt 1 requires retaking in the next semester.</li>
+                                <li>Failing Attempt 2 grants a 1-year window for the 3rd attempt.</li>
+                                <li>Failing Attempt 3 results in immediate exmatriculation.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Non-Attendance:</strong> If you miss an exam without formal deregistration or a valid medical certificate, it counts as an automatic fail grade (5.0).</li>
+                        <li><strong>Attempt Deadlines:</strong>
+                            <ul class="list-circle pl-5 text-xs text-slate-400 mt-1">
+                                <li>Semesters 1 & 2 subjects must be taken by 3rd Subject Semester (*2 subjects must be taken by 2nd semester).</li>
+                                <li>Semesters 3 & 4 subjects by 6th Subject Semester.</li>
+                                <li>Semesters 5–7 subjects by 9th Subject Semester.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Grade Improvement:</strong> 3–4 attempts are granted for grade improvement. If you do not improve, the attempt is discarded.</li>
+                    </ul>
+
+                    <h3 class="text-lg font-semibold text-white mt-4">SPO & APO Regulations Links</h3>
+                    <div class="text-xs grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <a href="https://fiw.thws.de/fileadmin/redaktion/dokumente/pruefung/APO_konsFassung_AendS-8_markiert.pdf" target="_blank" class="p-2 bg-surface/40 rounded border border-slate-800 text-primary hover:underline">General APO (German)</a>
+                        <a href="https://www.thws.de/fileadmin/redaktion/dokumente/amtliche_ver%C3%B6ffentlichungen/2019/2019-2_2.2_revised-translation200420.pdf" target="_blank" class="p-2 bg-surface/40 rounded border border-slate-800 text-primary hover:underline">General APO (English)</a>
+                        <a href="https://imc.thws.de/fileadmin/IMC/documents/SPO_IMC_ab_Okt_2021_2021-05-26_10.1_EN.pdf" target="_blank" class="p-2 bg-surface/40 rounded border border-slate-800 text-primary hover:underline">SPO IMC (English)</a>
+                        <a href="https://fwi.thws.de/studium/dokumente-formulare/studien-und-pruefungsordnungen/" target="_blank" class="p-2 bg-surface/40 rounded border border-slate-800 text-primary hover:underline">SPO IBE & IBL</a>
+                    </div>
+                </section>
+
+                <!-- Section 7: Healthcare & Emergency -->
+                <section id="healthcare" class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+                        <i data-lucide="stethoscope" class="w-6 h-6 text-primary"></i> 7. Healthcare & General Practitioners
+                    </h2>
+                    
+                    <p class="text-sm">
+                        In Germany, your primary healthcare contact is a <strong>Hausarzt</strong> (General Practitioner). They operate Mon–Fri. On weekends or evenings, visit a hospital emergency room.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                        <div class="p-3 bg-surface/40 rounded-lg border border-slate-800 space-y-1">
+                            <strong class="text-white text-sm block">Hospitals in Schweinfurt</strong>
+                            <p>• Krankenhaus St. Josef</p>
+                            <p>• Leopoldina Krankenhaus</p>
+                            <p>• Ärztehaus</p>
+                        </div>
+                        <div class="p-3 bg-surface/40 rounded-lg border border-slate-800 space-y-1">
+                            <strong class="text-white text-sm block">Pharmacies & Night Service</strong>
+                            <p>Find local pharmacies: <a href="https://www.dasoertliche.de/Themen/Apotheken/Schweinfurt.html" target="_blank" class="text-primary hover:underline">Das Örtliche</a></p>
+                            <p>Night/Emergency Pharmacies (24/7 rotation): <a href="https://www.aponet.de/service/notdienstapotheke-finden/suchergebnis/0/97421.html" target="_blank" class="text-primary hover:underline">Aponet Emergency Finder</a></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 8: Lifestyle & Groceries -->
+                <section id="lifestyle" class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2">
+                        <i data-lucide="shopping-bag" class="w-6 h-6 text-primary"></i> 8. International Groceries & Leisure
+                    </h2>
+                    
+                    <h3 class="text-lg font-semibold text-white">International Grocery Stores</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 bg-surface/30 rounded border border-slate-800">
+                            <strong class="text-indigo-400 block mb-1">South / East Asian</strong>
+                            • Asia Shop: Cramerstraße 5<br>
+                            • LoanPhuc Asia Center: Seestraße 11<br>
+                            • Mr. To Asiatische Lebensmittel: Graben 24
+                        </div>
+                        <div class="p-3 bg-surface/30 rounded border border-slate-800">
+                            <strong class="text-indigo-400 block mb-1">Syrian & Turkish</strong>
+                            • Supermarkt Damaskus: Wolfsgasse 13<br>
+                            • Supermarkt Jasmin: Roßmarkt 3<br>
+                            • Intermarkt / Ariana Markt: Luitpoldstraße 13 & 23
+                        </div>
+                        <div class="p-3 bg-surface/30 rounded border border-slate-800 sm:col-span-2">
+                            <strong class="text-indigo-400 block mb-1">Indian Groceries</strong>
+                            • Friedenstraße 20, 97421 Schweinfurt
+                        </div>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-white mt-4">Activities in & around Schweinfurt</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                        <div class="p-2.5 bg-surface/40 rounded border border-slate-800"><strong>Georg-Schäfer Museum:</strong> €2.50</div>
+                        <div class="p-2.5 bg-surface/40 rounded border border-slate-800"><strong>Wildpark an den Eichen:</strong> FREE</div>
+                        <div class="p-2.5 bg-surface/40 rounded border border-slate-800"><strong>Minigolf:</strong> €4.00</div>
+                        <div class="p-2.5 bg-surface/40 rounded border border-slate-800"><strong>Silvana Swimming Pool:</strong> €3–€8</div>
+                        <div class="p-2.5 bg-surface/40 rounded border border-slate-800"><strong>Ice Skating:</strong> €2 (+€3 skates)</div>
+                        <div class="p-2.5 bg-surface/40 rounded border border-slate-800"><strong>Bouldering / Climbing:</strong> €8 / day</div>
+                    </div>
+                </section>
+
+            </article>
+
+            <!-- Footer / Author Bio -->
+            <footer class="mt-16 pt-8 border-t border-slate-800 flex items-center justify-between">
+                <div>
+                    <p class="text-white font-bold">Written by Medhansh Rath</p>
+                    <p class="text-xs text-slate-500">M. Sc. Robotics Researcher</p>
+                </div>
+                <a href="../index.html#booking" class="bg-surface hover:bg-slate-700 text-white text-xs font-semibold px-4 py-2 rounded-lg border border-slate-700 transition">
+                    Book a Chat
+                </a>
+            </footer>
+
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // PDF Generation Script optimized for article pages
+        function downloadPagePDF() {
+            const container = document.getElementById('downloadable-article');
+            const clone = container.cloneNode(true);
+            
+            // Remove download buttons and quick navigation for print layout
+            const actions = clone.querySelector('#article-actions');
+            const nav = clone.querySelector('#toc-nav');
+            if (actions) actions.remove();
+            if (nav) nav.remove();
+
+            // Set clean white background for standard printing
+            clone.style.padding = '24px';
+            clone.style.backgroundColor = '#ffffff';
+            clone.style.color = '#1f2937';
+
+            // Convert text colors to dark shades for print legibility
+            const lightTexts = clone.querySelectorAll('.text-white, .text-slate-300, .text-slate-400');
+            lightTexts.forEach(el => el.style.color = '#111827');
+
+            const borders = clone.querySelectorAll('.border-slate-800, .border-slate-800\\/60');
+            borders.forEach(el => el.style.borderColor = '#e5e7eb');
+
+            const options = {
+                margin: [0.5, 0.5, 0.5, 0.5],
+                filename: 'THWS_Schweinfurt_Survival_Guide.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().set(options).from(clone).save();
+        }
+    </script>
+</body>
+</html>

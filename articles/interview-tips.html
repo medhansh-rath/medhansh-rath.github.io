@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Tips & Advice - Medhansh Rath</title>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#4f46e5', dark: '#0f172a', surface: '#1e293b' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- html2pdf.js for PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white min-h-screen">
+
+    <div class="max-w-3xl mx-auto px-6 py-12 md:py-20">
+        
+        <!-- Navigation Back Link -->
+        <a href="../index.html#about" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-indigo-400 mb-10 transition">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Main Page
+        </a>
+
+        <!-- Article Container for PDF Export -->
+        <div id="downloadable-article">
+
+            <!-- Article Header -->
+            <header class="mb-10 pb-8 border-b border-slate-800">
+                <div class="flex items-center gap-3 text-xs text-slate-400 mb-3">
+                    <span class="bg-primary/20 text-primary px-2.5 py-1 rounded-full font-semibold uppercase tracking-wider">Career Advice</span>
+                    <span>•</span>
+                    <time datetime="2026-07-31">July 31, 2026</time>
+                    <span>•</span>
+                    <span>5 min read</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+                    Practical Tips & Real Advice for Tech Interviews
+                </h1>
+                <p class="mt-4 text-lg text-slate-400 leading-relaxed">
+                    A casual, honest breakdown of how student/working student interviews actually go, how to handle technical questions, and what to ask at the end.
+                </p>
+
+                <!-- Download Actions Toolbar -->
+                <div id="article-actions" class="flex flex-wrap items-center gap-3 mt-6 pt-4 border-t border-slate-800/60">
+                    <!-- Download Source File -->
+                    <a href="interview-tips.html" download="Tech_Interview_Tips_Medhansh_Rath.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-surface hover:bg-slate-700 text-slate-200 hover:text-white px-3.5 py-2 rounded-lg border border-slate-700 transition shadow-sm">
+                        <i data-lucide="download" class="w-4 h-4 text-primary"></i> Download HTML
+                    </a>
+                    <!-- Export as PDF -->
+                    <button onclick="downloadPagePDF()" class="inline-flex items-center gap-2 text-xs font-semibold bg-surface hover:bg-slate-700 text-slate-200 hover:text-white px-3.5 py-2 rounded-lg border border-slate-700 transition shadow-sm">
+                        <i data-lucide="file-text" class="w-4 h-4 text-primary"></i> Export as PDF
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Article Content -->
+            <article class="space-y-6 text-slate-300 leading-relaxed text-base">
+                <p>
+                    Hey, so here are some tips for the interview. First of all, the most important thing is to <strong>be honest</strong>. If they ask you something technical and you don't know it, then just say that you don't know it. Or if you have a vague feeling, you can say something like, <em>"I'm not super familiar with the subject, but it might be X and Y."</em> (Don't use those exact words, but you get the point of what you need to convey). 
+                </p>
+
+                <blockquote class="border-l-4 border-primary pl-4 my-6 italic text-slate-200 bg-surface/40 py-3 pr-4 rounded-r-lg">
+                    "Make the stuff you've done seem important, but not too much. It's fine if you're 100% honest, but a little strategic positioning goes a long way."
+                </blockquote>
+
+                <p>
+                    This honesty rule, however, doesn't strictly apply when you are talking about yourself—it's okay to exaggerate a bit when talking about your experience or weaknesses. Don't go overboard, keep it around <strong>90% honest and 10% slight exaggerations</strong> (not flat-out lies). 
+                </p>
+
+                <p>
+                    For instance, in an internship I did, I basically set up some small test automation just to get a feel for the field—none of it was actually used by the main team. But I usually don't mention that last part. Basically, make the work you've done sound meaningful and relevant without over-claiming.
+                </p>
+
+                <h2 class="text-2xl font-bold text-white pt-4">How the Interview Usually Flows</h2>
+                <div class="space-y-3 text-sm">
+                    <div class="p-3 bg-surface/30 rounded-lg border border-slate-800">
+                        <strong class="text-indigo-400">1. Introductions:</strong> They introduce themselves and spend ~2 minutes talking about who they are and what they do.
+                    </div>
+                    <div class="p-3 bg-surface/30 rounded-lg border border-slate-800">
+                        <strong class="text-indigo-400">2. Your Turn:</strong> You give your introduction—make sure to have a solid elevator pitch ready!
+                    </div>
+                    <div class="p-3 bg-surface/30 rounded-lg border border-slate-800">
+                        <strong class="text-indigo-400">3. Standard & Technical Questions:</strong> They ask about your strengths/weaknesses and technical questions based on the job. (For AI roles: applications of AI, what optimization is, etc.). Don't bluff if you don't know—it's totally fine.
+                    </div>
+                    <div class="p-3 bg-surface/30 rounded-lg border border-slate-800">
+                        <strong class="text-indigo-400">4. Project Overview:</strong> They describe the project, scope of work, and daily responsibilities.
+                    </div>
+                    <div class="p-3 bg-surface/30 rounded-lg border border-slate-800">
+                        <strong class="text-indigo-400">5. Q&A Phase:</strong> Time for you to ask them questions. Always have questions ready!
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white pt-4">Questions to Ask at the End</h2>
+                <p>
+                    Even if you feel like you have no questions at the end, <strong>always think of something to ask—it shows initiative</strong>. Here are a few questions I like to ask:
+                </p>
+                <ul class="list-disc pl-5 space-y-2 text-sm">
+                    <li><em>"Could you tell me a bit more about the team I will be working with?"</em></li>
+                    <li><em>"Do you currently have interns or working students on the team? What are some of the main challenges previous students faced in this role?"</em></li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-white pt-4">Preparation Strategy</h2>
+                <p>
+                    Read the job description carefully and look up terms or concepts you don't know yet. They won't deduct points for you not knowing every niche detail, but if the job mentions something like <em>"AI methods for additive manufacturing,"</em> it's a huge plus to understand the basics of what additive manufacturing even is.
+                </p>
+                <p>
+                    They know you are a student—they don't expect you to be a master of everything, so don't stress out too much!
+                </p>
+            </article>
+
+            <!-- Footer / Author Bio -->
+            <footer class="mt-16 pt-8 border-t border-slate-800 flex items-center justify-between">
+                <div>
+                    <p class="text-white font-bold">Written by Medhansh Rath</p>
+                    <p class="text-xs text-slate-500">M. Sc. Robotics Researcher</p>
+                </div>
+                <a href="../index.html#booking" class="bg-surface hover:bg-slate-700 text-white text-xs font-semibold px-4 py-2 rounded-lg border border-slate-700 transition">
+                    Book a Chat
+                </a>
+            </footer>
+
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // PDF Generation Script optimized for article pages
+        function downloadPagePDF() {
+            const container = document.getElementById('downloadable-article');
+            const clone = container.cloneNode(true);
+            
+            // Remove download toolbar for clean PDF export
+            const actions = clone.querySelector('#article-actions');
+            if (actions) actions.remove();
+
+            // Set clean white background for standard printing
+            clone.style.padding = '24px';
+            clone.style.backgroundColor = '#ffffff';
+            clone.style.color = '#1f2937';
+
+            // Convert dark theme colors to print-friendly tones
+            const lightTexts = clone.querySelectorAll('.text-white, .text-slate-300, .text-slate-400');
+            lightTexts.forEach(el => el.style.color = '#111827');
+
+            const borders = clone.querySelectorAll('.border-slate-800, .border-slate-800\\/60');
+            borders.forEach(el => el.style.borderColor = '#e5e7eb');
+
+            const options = {
+                margin: [0.5, 0.5, 0.5, 0.5],
+                filename: 'Tech_Interview_Tips_Medhansh_Rath.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().set(options).from(clone).save();
+        }
+    </script>
+</body>
+</html>
